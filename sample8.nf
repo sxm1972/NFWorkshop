@@ -7,6 +7,7 @@ params.outdir = "results"
  * given the transcriptome file
  */
 process INDEX {
+  publishDir params.outdir, mode:'copy'     
   input:
   path transcriptome
 

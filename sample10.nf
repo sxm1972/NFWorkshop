@@ -21,5 +21,5 @@ workflow {
        .splitCsv(header:true)
        .map{ row-> tuple(row.sampleId, file(row.read1), file(row.read2)) }
     rows_ch.view()
-    foo(rows_ch)
+    foo(rows_ch).view()
 }

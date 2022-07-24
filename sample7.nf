@@ -1,23 +1,4 @@
-params.reads = "$baseDir/data/ggal/gut_{1,2}.fq"
-params.transcript = "$baseDir/data/ggal/transcriptome.fa"
-params.multiqc = "$baseDir/multiqc"
-params.outdir = "results"
-/*
- * define the `index` process that creates a binary index
- * given the transcriptome file
- */
-process INDEX {
-  input:
-  path transcriptome
-
-  output:
-  path 'salmon_index'
-
-  script:
-  """
-  salmon index --threads $task.cpus -t $transcriptome -i salmon_index
-  """
-}
+include { INDEX } from './sample5.nf'
 
 process QUANTIFICATION {
      
@@ -38,6 +19,6 @@ workflow {
   Channel 
     .fromFilePairs( params.reads, checkIfExists:true )
     .set { read_pairs_ch } 
-  index_ch = INDEX(params.transcript)
+  index_ch = INDEX(params.transcriptome_file)
   QUANTIFICATION(index_ch, read_pairs_ch)
 }

@@ -1,4 +1,3 @@
-params.transcriptome_file = "$projectDir/data/ggal/transcriptome.fa"
 /*
  * define the `index` process that creates a binary index
  * given the transcriptome file
@@ -18,4 +17,5 @@ process INDEX {
 
 workflow {
   index_ch = INDEX(params.transcriptome_file)
+  index_ch.view()
 }
