@@ -1,2 +1,4 @@
 sampleId,read1,read2
 sampl1,data/ggal/gut_1.fq,data/ggal/gut_2.fq
+sampl2,data/ggal/liver_1.fq,data/ggal/liver_2.fq
+sampl3,data/ggal/lung_1.fq,data/ggal/lung_2.fq
